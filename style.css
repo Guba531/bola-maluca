@@ -1,0 +1,22 @@
+body {
+    font-family: 'Kavoon', cursive;
+    background-color: #065D01;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    background-color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: grid;
+}
+
+.subtitle {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
