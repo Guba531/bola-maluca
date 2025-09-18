@@ -1,0 +1,8 @@
+js: criar variaveis de tempo, criar variaveis de objetos aleatorios, criar variaveis de
+contar tempo, tentativas, pontos, etc. Criar variaveis de movimento (ações), criar variaveis de
+tamanho, criar variaveis de botão, criar variaveis de cor, criar variaveis de numeros, criar
+variaveis de som (efeitos sonoros, musica e etc)
+
+js: function startGame, function endGame, function
+updateTimer, function resetGame, function resetBtn,
+function addEventListener (função de click)
