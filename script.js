@@ -3,22 +3,62 @@ const ctx = canvas.getContext('2d');
 const clearButton = document.getElementById('resetButton');
 const shapeBtns = document.querySelectorAll('.shape-btn');
 
-let balls = [];
-let startTime = null;
-let attempts = 0;
+//let balls = [];
+let startTime = 0;
+let attempts = 3;
 let gameStarted = false;
-let timerInterval = null;
+//let timerInterval = null;
 let points = 0;
+const ballsRadius = 20;
+const ballStart = 4;
 
-const attemptsSpan = document.getElementById('attempts');
+const attemptsSpan = document.getElementById('attempts'); //Tentativas
 const timeSpan = document.getElementById('time');
 const messageDiv = document.getElementById('message');
 const resetBtn = document.getElementById('resetBtn');
+const score = document.getElementById('score');
 
 const clickSound = new Audio('');
 const winSound = new Audio('');
 const defeatSound = new Audio('');
 const missSound = new Audio('');
+
+const balls = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+const ballsValue = {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 15,
+    12: 25,
+    13: 35,
+    14: 45,
+}
+
+const ballsTime = {
+    1: 9500,
+    2: 9000,
+    3: 8000,
+    4: 7000,
+    5: 6000,
+    6: 5000,
+    7: 4000,
+    8: 3000,
+    9: 2500,
+    10: 1500,
+    11: 1000,
+    12: 900,
+    13: 800,
+    14: 700,
+}
+
+const ballsColor = ['yellow', 'light-brown', 'wine', 'light-orange', 'magenta', 'sea-green', 'orange', 'black', 'light-purple', 'pink', 'light-green', 'blue', 'red', 'turquoise'];
 
 function startGame() {
     gameStarted = true;
@@ -44,14 +84,6 @@ function endGame() {
     messageDiv.textContent = `🎉Você ganhou em ${attempts} tentativas!`
     messageDiv.classList.add('win-message');
     messageDiv.classList.add('show');
-}
-
-function drawCircle(ctx, x, y, size, color) {
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.fill();
 }
 
 resetBtn.addEventListener('click', resetGame);
