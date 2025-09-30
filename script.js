@@ -66,6 +66,19 @@ function startGame() {
     timerInterval = setInterval(updateTimer, 1000);
 }
 
+function drawBall(ball) {
+    ctx.fillStyle = ballsColor;
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, size / 2, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = white;
+    ctx.font = `${ball.radius * 0.8}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ball.value.toString(), ball.x, ball.y);
+}
+
 function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000);
@@ -75,15 +88,6 @@ function updateTimer() {
 
     const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}'`;
     timeSpan.textContent = formattedTime;
-}
-
-function endGame() {
-    clearInterval(timerInterval);
-    winSound.currentTime = 0;
-    winSound, play();
-    messageDiv.textContent = `🎉Você ganhou em ${attempts} tentativas!`
-    messageDiv.classList.add('win-message');
-    messageDiv.classList.add('show');
 }
 
 resetBtn.addEventListener('click', resetGame);
@@ -105,3 +109,11 @@ function resetGame() {
 
 }
 
+function endGame() {
+    clearInterval(timerInterval);
+    winSound.currentTime = 0;
+    winSound, play();
+    messageDiv.textContent = `🎉Você ganhou em ${attempts} tentativas!`
+    messageDiv.classList.add('win-message');
+    messageDiv.classList.add('show');
+}

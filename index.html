@@ -9,21 +9,14 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="title">
-            <h1>BOLA MALUCA!</h1>
-        </div>
-        <div class="subtitle">
-            <h3>Você consegue clicar em todas as bolas?</h3>
-        </div>
-    </div>
     <div class="timer">Tempo: <span id="time">00:00</span></div>
     <button id="resetBtn">Novo Jogo</button>
-    <div class="score">Tentativas:  <span id="attempts">0</span></div>
+    <div class="score">Tentativas: <span id="attempts">0</span></div>
     <div class="message" id="message"></div>
-    
-
-    <script src=“script.js”></script>
+    <div class="prancheta-container">
+        <canvas id="myCanvas"></canvas>
+    </div>
 </body>
+<script src=“script.js”></script>
 
 </html>
