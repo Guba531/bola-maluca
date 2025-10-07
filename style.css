@@ -1,9 +1,9 @@
 body {
     font-family: 'Kavoon', cursive;
     background-color: #065D01;
-    display: flex;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .title {
@@ -24,4 +24,40 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
+}
+
+.timer {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.score {
+    display: inline-block;
+    margin-left: 20px;
+    
+}
+
+#myCanvas {
+    border-radius: 5px;
+    align-items: center;
+    width: 1200px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    cursor: crosshair; /* Ou pointer, ou até uma imagem customizada */
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    background-color: chocolate;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.resetButton {
+    font-family: "BBH Sans Hegarty", sans-serif;
+    border-radius: 5px;
 }

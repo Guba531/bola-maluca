@@ -79,6 +79,8 @@ function drawBall(ball) {
     ctx.fillText(ball.value.toString(), ball.x, ball.y);
 }
 
+
+
 function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000);
@@ -117,3 +119,5 @@ function endGame() {
     messageDiv.classList.add('win-message');
     messageDiv.classList.add('show');
 }
+
+drawBall(ctx, 80, 30, 45, pink);
