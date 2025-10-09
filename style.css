@@ -15,14 +15,28 @@ body {
 }
 
 .subtitle {
+    margin-top: 110px;
+    color: yellow;
     justify-content: center;
     align-items: center;
     position: absolute;
 }
 
 .startButton {
-    justify-content: center;
+    border-radius: 50%;
+    background-color: rgb(30, 210, 39);
+    font-weight: bold;
+    font-size: 2em;
+    height: 150px;
+    width: 220px;
     align-items: center;
+}
+
+.buttonGame {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    margin-top: 180px;
     position: absolute;
 }
 
@@ -40,7 +54,7 @@ body {
 #myCanvas {
     border-radius: 5px;
     align-items: center;
-    width: 1200px;
+    width: 800px;
     height: 500px;
     background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
     cursor: crosshair; /* Ou pointer, ou até uma imagem customizada */
@@ -61,3 +75,4 @@ body {
     font-family: "BBH Sans Hegarty", sans-serif;
     border-radius: 5px;
 }
+
