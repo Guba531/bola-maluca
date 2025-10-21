@@ -8,8 +8,8 @@ const ctx = canvas.getContext('2d');
 //let attempts = 3;
 //let gameStarted = false;
 //let timerInterval = null;
-//let points = 0;
-const ballsRadius = 10;
+//let points = 0;8
+const ballsRadius = 20;
 //const ballStart = 4;
 
 /*
