@@ -51,7 +51,7 @@ function drawBall(ball) {
 }
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.heigth);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function updateGameDisplay() {
@@ -65,7 +65,7 @@ function generateBall() {
     const randomValue = getRandomItem(balls);
     const randomColor = getRandomItem(ballsColor);
     const x = getRandomInt(ballsRadius, canvas.width - ballsRadius);
-    const y = getRandomInt(ballsRadius, canvas.heigth - ballsRadius);
+    const y = getRandomInt(ballsRadius, canvas.height - ballsRadius);
 
     const newBall = {
         id: Date.now() + Math.random(),
@@ -73,10 +73,10 @@ function generateBall() {
         y: y,
         radius: ballsRadius,
         color: randomColor,
-        value: balls,
-        points: ballPoints[balls],
+        value: randomValue,
+        points: ballPoints[randomValue],
         spawnTime: Date.now(),
-        lifespan: ballsTime[balls]
+        lifespan: ballsTime[randomValue]
     };
 
     activeBalls.push(newBall);
