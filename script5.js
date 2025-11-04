@@ -1,6 +1,6 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-const scoreSpan = document.getElementById('score');
+const scoreSpan = document.getElementById('attempts');
 const timerSpan = document.getElementById('time');
 const restartButton = document.getElementById('resetBtn');
 const messageDiv = document.getElementById('message');
@@ -138,9 +138,22 @@ function startTimer() {
         gameTimer--;
         updateGameDisplay();
 
-        if (gameTimer <= 0) {
+        const mensagens = [
+  "⏰ O tempo voou!",
+  "😅 Acabou rapidinho, hein?",
+  "🎯 Você mandou bem!",
+  "✨ Fim de jogo, artista do teclado!"
+];
+
+if (gameTimer <= 0) {
+    const aleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+    endGame(`${aleatoria}       Sua pontuação: ${score}`);
+}
+
+        /*if (gameTimer <= 0) {
             endGame(`Tempo esgotado! Sua pontuação final: ${score}`);
-        }
+            
+        }*/
     }, 1000);
 }
 
