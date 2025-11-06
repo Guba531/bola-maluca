@@ -4,6 +4,12 @@ const scoreSpan = document.getElementById('attempts');
 const timerSpan = document.getElementById('time');
 const restartButton = document.getElementById('resetBtn');
 const messageDiv = document.getElementById('message');
+const highScoreDisplay = document.getElementById('highScoreDisplay');
+const lastScoreList = document.getElementById('lastScoreList');
+const cincoJogadas = document.getElementById('5jogadas');
+
+const clickSound = new Audio('sounds/computer-mouse-click-352734.mp3');
+const winSound = new Audio('sounds/successed-295058.mp3');
 
 const gameDuration = 30;
 const ballsRadius = 20;
@@ -28,6 +34,8 @@ let gameTimer = gameDuration;
 let gameRunning = false;
 let gameInterval;
 let animationFrameId;
+let highScore = 0;
+let lastScores = [];
 
 function getRandomItem(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
@@ -57,6 +65,18 @@ function clearCanvas() {
 function updateGameDisplay() {
     scoreSpan.textContent = score;
     timerSpan.textContent = gameTimer;
+}
+
+function updateRecordsDisplay() {
+    highScoreDisplay.textContent = highScore;
+
+    lastScoreList.innerHTML = '';
+
+    lastScores.forEach((s, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `jOGADA ${lastScores.length - index}: ${s} pontos`;
+        lastScoreList.appendChild(listItem);
+    })
 }
 
 function generateBall() {
@@ -108,6 +128,8 @@ function gameLoop() {
 function handleClick(event) {
     if (!gameRunning) return;
 
+    clickSound.currentTime = 0;
+    clickSound.play();
     const rect = canvas.getBoundingClientRect();
     const clickX = event.clientX - rect.left;
     const clickY = event.clientY - rect.top;
@@ -171,6 +193,8 @@ function initGame() {
     updateGameDisplay();
     clearCanvas();
 
+    updateRecordsDisplay();
+
     for (let i = 0; i < ballStart; i++) {
         generateBall();
     }
@@ -182,6 +206,8 @@ function initGame() {
 }
 
 function endGame(msg = "") {
+    winSound.currentTime = 0;
+    winSound.play();
     gameRunning = false;
     clearInterval(gameInterval);
     cancelAnimationFrame(animationFrameId);
@@ -193,6 +219,8 @@ function endGame(msg = "") {
     if (msg.includes("Tempo esgotado")) {
         messageDiv.classList.add('message');
     }
+
+    updateRecordsDisplay();
 
     console.log(`Jogo finalizado! Pontuação: ${score}`);
 }
