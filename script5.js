@@ -34,6 +34,10 @@ let gameTimer = gameDuration;
 let gameRunning = false;
 let gameInterval;
 let animationFrameId;
+
+// NOVO: Variáveis para armazenar o recorde e as últimas jogadas.
+// Estes dados são armazenados apenas na memória enquanto a página está aberta.
+// Se a página for recarregada ou fechada, esses valores serão resetados.
 let highScore = 0;
 let lastScores = [];
 
@@ -76,7 +80,7 @@ function updateRecordsDisplay() {
         const listItem = document.createElement('li');
         listItem.textContent = `jOGADA ${lastScores.length - index}: ${s} pontos`;
         lastScoreList.appendChild(listItem);
-    })
+    });
 }
 
 function generateBall() {
@@ -218,6 +222,16 @@ function endGame(msg = "") {
 
     if (msg.includes("Tempo esgotado")) {
         messageDiv.classList.add('message');
+    }
+
+    if (score > highScore) {
+        highScore = score;
+    }
+
+    lastScores.unshift(score);
+
+    if (lastScores.length > 5) {
+        lastScores.pop();
     }
 
     updateRecordsDisplay();
